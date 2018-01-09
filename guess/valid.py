@@ -2,13 +2,10 @@ def menu_choice(choice):
     if is_int(choice):
         choice = int(choice)
         if choice > 0 and choice <= 3:
-            print("choice is valid")
             return True
         else:
-            print("choice is not valid")
             return False
     else:
-        print("choice is not a number")
         return False
 
 

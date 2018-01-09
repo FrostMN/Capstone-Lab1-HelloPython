@@ -6,10 +6,10 @@ class Game:
 
     limit = int
 
-    def __init__(self, limit=10):
+    def __init__(self, limit=100):
         self.limit = limit
 
-    def run_game(self):
+    def run(self):
 
         choice = -1
 
@@ -35,13 +35,13 @@ class Game:
             print("guit")
 
     def guess_computers_number(self):
-        min = 1
-        max = 100
-        number = randint(min, max)
+        min_number = 1
+        max_number = self.limit
+        number = randint(min_number, max_number)
         guessed = False
         guesses = 0
         while not guessed:
-            print("Please guess a number between " + str(min) + " and " + str(max) + ".")
+            print("Please guess a number between " + str(min_number) + " and " + str(max_number) + ".")
             guess = input("Your guess: ")
             guesses += 1
 
@@ -54,7 +54,7 @@ class Game:
                 if number > guess:
                     print("you need to guess higher!")
             else:
-                print("Please enter a valid number between " + str(min) + " and " + str(max) + ".")
+                print("Please enter a valid number between " + str(min_number) + " and " + str(max_number) + ".")
         print("your guess of " + str(number) + " was correct!")
         print("you guessed it in only " + str(guesses) + " guesses!")
 
