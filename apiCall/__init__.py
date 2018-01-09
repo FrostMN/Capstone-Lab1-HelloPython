@@ -1,7 +1,7 @@
 import requests
 import json
 
-api_key = "6L5Dv9LWOV7VrqVeKk8H3boogJ7ieLFA6av8zk877PzNSA8a3ddm4jtRZtGhctit"
+api_key = ""
 api_url = "https://www.zipcodeapi.com/rest/<api_key>/distance.json/<zip_code1>/<zip_code2>/mile"
 api_url = api_url.replace("<api_key>", api_key)
 
