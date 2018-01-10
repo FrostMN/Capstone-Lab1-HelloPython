@@ -18,9 +18,9 @@ class Game:
                 return 0
             menu_string = \
                 "Guess the Number: \n" \
-                "  1 - Guess The Computers Number\n" \
-                "  2 - The Computers Guess Your Number\n" \
-                "  3 - Quit\n"
+                "\t1 - Guess The Computers Number\n" \
+                "\t2 - The Computers Guess Your Number\n" \
+                "\t3 - Quit\n"
 
             print(menu_string)
             choice = input("What would you like to do?\n")
@@ -59,4 +59,46 @@ class Game:
         print("you guessed it in only " + str(guesses) + " guesses!")
 
     def computer_guesses_number(self):
-        print("not yet implemented")
+        guessed = False
+        guesses = 1
+        lower_limit = 0
+        upper_limit = 100
+        print("think of a number between 1 and 100 (inclusive).")
+        input("hit enter when ready.")
+        guess = self.first_guess()
+        while not guessed:
+            answer = self.guess_correct(guess)
+            if answer == 1:
+                print("I guessed your number: " + str(guess))
+                print("in only " + str(guesses) + " guesses!")
+                return 0
+            guess, lower_limit, upper_limit = self.guess_number(answer, guess, lower_limit, upper_limit)
+            guesses += 1
+            if lower_limit == upper_limit:
+                print("I think you fibbed to me,")
+                print("if you're not gonna play fair I quit")
+                return 0
+
+    # picks a number between 45 and 55 for computers first guess
+    def first_guess(self):
+        return 45 + randint(0, 10)
+
+    # asks if the guess was correct
+    def guess_correct(self, guess):
+        choice = -1
+        while not valid.menu_choice(choice):
+            print("is your number " + str(guess) + "?\n\t1 - yes\n\t2 - too low\n\t3 - too high")
+            choice = input("please input number: ")
+        choice = int(choice)
+        return choice
+
+    # does a version of binary search to guess the players number
+    # returns a 3 filed tuple that gets unpacked into vars the game uses
+    def guess_number(self, answer, guess, lower, upper):
+        if answer == 2:
+            new_guess = guess + (upper - guess) // 2
+            print(guess)
+            return new_guess, guess, upper
+        else:
+            new_guess = lower + (guess - lower) // 2
+            return new_guess, lower, guess

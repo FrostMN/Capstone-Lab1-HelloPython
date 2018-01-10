@@ -1,7 +1,7 @@
-def menu_choice(choice):
+def menu_choice(choice, lower=0, upper=3):
     if is_int(choice):
         choice = int(choice)
-        if choice > 0 and choice <= 3:
+        if lower < choice <= upper:
             return True
         else:
             return False
@@ -9,10 +9,10 @@ def menu_choice(choice):
         return False
 
 
-def guess(numb, min=0, max=100):
+def guess(numb, lower=0, upper=100):
     if is_int(numb):
         numb = int(numb)
-        if numb > min and numb <= max:
+        if lower < numb <= upper:
             return True
         else:
             return False
@@ -22,9 +22,9 @@ def guess(numb, min=0, max=100):
 
 def is_int(number):
     try:
-        numb = int(number)
+        int(number)
         return True
-    except:
+    except ValueError:
         return False
 
 
