@@ -1,6 +1,11 @@
+def display_banner():
+    '''Display program name in banner'''
+    msg = 'camelCase converter'
+    stars = "*" * len(msg)
+    print( '\n' + stars + '\n' + msg + '\n' + stars + '\n\n')
 
 def ask_for_string():
-    return input("please enter a string to camelify!")
+    return input("please enter a string to camelify: \n")
 
 
 def camelify(text=""):
@@ -13,5 +18,6 @@ def camelify(text=""):
 
 
 if __name__ == '__main__':
+    display_banner()
     string = ask_for_string()
     print(camelify(string))
