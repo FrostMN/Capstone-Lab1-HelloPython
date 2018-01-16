@@ -13,7 +13,10 @@ def camelify(text=""):
     lower_text =  text.lower()
     split_text = lower_text.split(" ")
     for word in split_text:
-        camelfied += word[0].upper() + word[1:]
+        if len(word) > 1:
+            camelfied += word[0].upper() + word[1:]
+        else:
+            camelfied += word[0].upper()
     return camelfied[0].lower() + camelfied[1:]
 
 
